@@ -93,7 +93,7 @@ function UserServer (){
             <div>
                 {user.map((item)=>{
                     return(
-                        <div>
+                        <div key={item.id}>
                             <h3>{item.username}</h3>
                             <p>{item.email}</p>
                         </div>

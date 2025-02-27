@@ -7,10 +7,17 @@ router.get('/getAllUsers', userController.getAllUsers);
 
 router.post('/createUser', userController.createUser);
 
-router.get('/getUsersById', userController.getAllUserBYId);
+router.get('/getUserById/:id', userController.getUserById);
 
-router.post('/signUp', userController.signUp);
+router.put('/updateUser/:id', userController.updateUser);
 
-router.post('/logIn', userController.logIn);
+router.delete('/deleteUser/:id', userController.deleteUser);
+
+router.post('/signup', userController.signup)
+
+router.post('/login', userController.login)
+// router.post('/signUp', userController.signUp);
+
+// router.post('/logIn', userController.logIn);
 
 module.exports= router;
