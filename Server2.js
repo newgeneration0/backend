@@ -15,12 +15,17 @@ app.use(cors());
 app.use(express.json());
 
 
-
 app.use('/users', userRoutes)
 
 app.use('/products', productRoutes)
 
 app.use('/order', orderRoutes)
+
+
+app.listen(3000, ()=>{
+    console.log('server is running on port 3000')
+})
+
 
 // app.get('/user', (req, res)=>{
 //     res.send(data)
@@ -31,15 +36,6 @@ app.use('/order', orderRoutes)
 //     data.push(userData)
 //     res.json('user created')
 // })
-
-
-
-app.listen(4000, ()=>{
-    console.log('server is running on port 4000')
-})
-
-
-
 
 
 // const express = require('express')

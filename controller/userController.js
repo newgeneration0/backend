@@ -1,5 +1,7 @@
 const User = require("../model/userModel")
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken')
+
 
 exports.getAllUsers = async (req, res)=>{
     try {
@@ -85,15 +87,16 @@ exports.signup =async (req, res)=>{
 exports.login = async (req, res)=>{
     try {
         const existingUser = await User.findOne({email : req.body.email}); 
-        if(!existingUser) return res.status(404).send({error: 'account not found, sign up to create an account'})
-        console.log(existingUser)
+        if(!existingUser) return res.status(404).send({error: 'User not found'})
+        // console.log(existingUser)
         // if(req.body.password !== existingUser.password) return res.status(401).send({error:" incorrect password"})
         const isMatch = await bcrypt.compare(req.body.password, existingUser.password);
         // console.log(isMatch)
         if(!isMatch) return res.status(401).send({error: 'incorrect Password'})
-        res.status(202).send({message: "Login sucessful"})
+        let token = jwt.sign({role : existingUser.role, id : existingUser._id}, 'your-jwt-secret', {expiresIn : "1h"})
+        res.status(202).send({message: "Login sucessful", token : token})
     } catch (error) {
-        
+        res.status(500).send({message: 'error', error: error.message})
     }
 }
 

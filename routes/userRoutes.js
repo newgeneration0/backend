@@ -16,6 +16,7 @@ router.delete('/deleteUser/:id', userController.deleteUser);
 router.post('/signup', userController.signup)
 
 router.post('/login', userController.login)
+
 // router.post('/signUp', userController.signUp);
 
 // router.post('/logIn', userController.logIn);
