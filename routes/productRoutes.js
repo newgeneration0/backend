@@ -1,12 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-router.get('/getAllProduct', (req, res)=>{
-    res.send('all product fetched')
-})
+const { getAllProducts, getProductById, addProduct, updateProduct, deleteProduct } = require('../controller/productController')
 
-router.get('/getProductById', (req, res)=>{
-    res.send('product fetched by ID')
-})
+router.get('/getAllProducts', getAllProducts);
+
+router.get('/getProductById/:id', getProductById);
+
+router.post('/addProduct', addProduct);
+
+router.put('/updateProduct/:id', updateProduct);
+
+router.delete('/deleteProduct/:id', deleteProduct)
 
 module.exports = router;

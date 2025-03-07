@@ -12,7 +12,7 @@ import AutheProvider from './context/AutheProvider'
 function App() {
 
   return (
-    <div className='w-screen h-screen'>
+    <div className='w-screen h-screen p-4'>
     <AutheProvider>
       <RouterProvider router={Router} />
     </AutheProvider>

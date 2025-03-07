@@ -18,7 +18,7 @@ function AutheProvider({children}) {
             return null;
         }
         let decodedToken = jwtDecode(token);
-        console.log(decodedToken)
+        // console.log(decodedToken)
         return decodedToken.role;
         // console.log(decodedToken)
     }
